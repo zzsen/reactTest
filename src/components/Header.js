@@ -22,6 +22,12 @@ class Header extends React.Component {
           <span className="AppNameText">React-Test</span>
           <Tag className="AppTag">I'm a tag</Tag>
         </div>
+
+        
+        <div className="logout">
+          用户名称
+          <Icon type="logout" />
+        </div>
         <Menu
           className="AppMenu"
           onClick={this.handleClick}
