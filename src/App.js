@@ -8,14 +8,14 @@ import Header from './components/Header.js';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div>
-        <img src={logo} className="App-logo" alt="logo" />
+      <Header/>
+      <div className="AppBody">
+        <img src={logo} className="Applogo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
-          className="App-link"
+          className="Applink"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
