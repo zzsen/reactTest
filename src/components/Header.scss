@@ -1,26 +1,37 @@
 .AppHeader {
-   width: 100%;
-   height: 60px;
-   position: fixed;
-   top: 0;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
 }
 
 .AppName {
-   position: absolute;
-   height: 60px;
-   text-align: center;
-   line-height: 40px;
-   padding:10px;
-   color: #108ee9;
-   font-size: 30px;
-   font-weight: bold;
-   &:hover{
-      text-shadow: 2px 2px 5px #666666
-   }
+  position: absolute;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  padding:10px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  &:hover{
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgb(199, 194, 194)
+  }
+  .AppTag {
+    top: -5px;
+    cursor: pointer;
+    margin-left: 5px;
+    position: relative;
+    background-color: #2db7f5;
+  }
 }
-.AppTag {
-   top: -5px;
-   margin-left: 5px;
-   position: relative;
-   background-color: #2db7f5;
+
+.AppMenu{
+  background-color: gray !important;
+  li {
+    height: 60px !important;
+    line-height: 60px;
+    color: white !important;
+  }
 }
