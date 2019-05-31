@@ -37,6 +37,7 @@
 }
 
 .logout {
+  cursor: pointer;
   height: 60px;
   line-height: 60px;
   position: absolute;
@@ -44,5 +45,8 @@
   padding: 0 20px;
   i {
     margin-left: 5px;
+  }
+  &:hover {
+    color: white;
   }
 }
