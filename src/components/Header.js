@@ -56,10 +56,9 @@ class Header extends React.Component {
   }
 
   handleClick = e => {
-    console.log('click ', e);
+    console.log(this.props.match)
     this.setState({
-      current: e.key,
-      ...this.state
+      current: e.key
     });
   }
 
@@ -83,7 +82,9 @@ class Header extends React.Component {
         >
         {
           menuItem.children.map(sonGroup=>
-            <Menu.ItemGroup title={sonGroup.name}>
+            <Menu.ItemGroup
+              key={sonGroup.name}
+              title={sonGroup.name}>
             {
               sonGroup.menus.map(subMenu=>
                 <Menu.Item key={subMenu.path}>
@@ -102,7 +103,7 @@ class Header extends React.Component {
         </SubMenu>
       ) : (
         <Menu.Item 
-          key={menuItem.name}>
+          key={menuItem.path}>
           <NavLink
             to="/One"
             exact={menuItem.exact}
