@@ -5,58 +5,78 @@ import { Tag, Menu, Icon } from 'antd'
 const { SubMenu }  = Menu;
 
 class Header extends React.Component {
-  state = {
-    current: 'mail',
-    menus: [ 
-      {
-        name: 'one',
-        path: '/one',
-        exact: true
-      }, {
-        name: 'two',
-        path: '/two',
-        exact: true,
-        children: [ 
-          {
-            name: 'group-one',
-            menus: [ 
-              {
-              name: 'two-one',
-              path: '/two_one',
-              exact: true
-              }, 
-              {
-              name: 'two-two',
-              path: '/two_two',
-              exact: true
-              } 
-            ]
-          },
-          {
-            name: 'group-two',
-            menus: [ 
+  constructor(props) {
+    super(props)
+    this.state = {
+      date: new Date(),
+      current: 'mail',
+      menus: [ 
+        {
+          name: 'one',
+          path: '/project/list',
+          exact: true
+        }, {
+          name: 'two',
+          path: '/two',
+          exact: true,
+          children: [ 
+            {
+              name: 'group-one',
+              menus: [ 
                 {
-                  name: 'two-one',
-                  path: '/two_one',
-                  exact: true
-                }, {
-                  name: 'two-two',
-                  path: '/two_two',
-                  exact: true
-                }
+                name: 'two-one',
+                path: '/two_one',
+                exact: true
+                }, 
+                {
+                name: 'two-two',
+                path: '/two_two',
+                exact: true
+                } 
               ]
-          }
-        ]
-      }, {
-        name: 'three',
-        path: '/three',
-        exact: true
-      } 
-    ]
+            },
+            {
+              name: 'group-two',
+              menus: [ 
+                  {
+                    name: 'two-one',
+                    path: '/two_one',
+                    exact: true
+                  }, {
+                    name: 'two-two',
+                    path: '/two_two',
+                    exact: true
+                  }
+                ]
+            }
+          ]
+        }, {
+          name: 'three',
+          path: '/three',
+          exact: true
+        } 
+      ]
+    }
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }  
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  
+  tick() {
+    this.setState({
+      date: new Date()
+    });
   }
 
   handleClick = e => {
-    console.log(this.props.match)
     this.setState({
       current: e.key
     });
@@ -105,7 +125,7 @@ class Header extends React.Component {
         <Menu.Item 
           key={menuItem.path}>
           <NavLink
-            to="/One"
+            to={menuItem.path}
             exact={menuItem.exact}
             activeClassName="navActive">
             <Icon type="mail" />
@@ -145,6 +165,7 @@ class Header extends React.Component {
           <span className="logoutBtn">
             <Icon type="logout" />退出
           </span>
+          It is {this.state.date.toLocaleTimeString()}.
         </div>
         {this.getMenus()}
       </div>
