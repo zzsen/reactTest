@@ -1,8 +1,8 @@
-import React from 'react';
-import './Header.scss';
+import React from 'react'
+import './Header.scss'
 import { HashRouter as Router, NavLink } from "react-router-dom"
 import { Tag, Menu, Icon } from 'antd'
-const { SubMenu }  = Menu;
+const { SubMenu }  = Menu
 
 class Header extends React.Component {
   constructor(props) {
@@ -79,7 +79,7 @@ class Header extends React.Component {
   handleClick = e => {
     this.setState({
       current: e.key
-    });
+    })
   }
 
   /**
@@ -173,4 +173,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Header
