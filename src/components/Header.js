@@ -7,55 +7,56 @@ const { SubMenu }  = Menu
 class Header extends React.Component {
   constructor(props) {
     super(props)
+    const menus = [ 
+      {
+        name: 'one',
+        path: '/project/list',
+        exact: true
+      }, {
+        name: 'two',
+        path: '/two',
+        exact: true,
+        children: [ 
+          {
+            name: 'group-one',
+            menus: [ 
+              {
+              name: 'two-one',
+              path: '/two_one',
+              exact: true
+              }, 
+              {
+              name: 'two-two',
+              path: '/two_two',
+              exact: true
+              } 
+            ]
+          },
+          {
+            name: 'group-two',
+            menus: [ 
+                {
+                  name: 'two-one',
+                  path: '/two_one',
+                  exact: true
+                }, {
+                  name: 'two-two',
+                  path: '/two_two',
+                  exact: true
+                }
+              ]
+          }
+        ]
+      }, {
+        name: 'three',
+        path: '/three',
+        exact: true
+      } 
+    ]
     this.state = {
       date: new Date(),
-      current: 'mail',
-      menus: [ 
-        {
-          name: 'one',
-          path: '/project/list',
-          exact: true
-        }, {
-          name: 'two',
-          path: '/two',
-          exact: true,
-          children: [ 
-            {
-              name: 'group-one',
-              menus: [ 
-                {
-                name: 'two-one',
-                path: '/two_one',
-                exact: true
-                }, 
-                {
-                name: 'two-two',
-                path: '/two_two',
-                exact: true
-                } 
-              ]
-            },
-            {
-              name: 'group-two',
-              menus: [ 
-                  {
-                    name: 'two-one',
-                    path: '/two_one',
-                    exact: true
-                  }, {
-                    name: 'two-two',
-                    path: '/two_two',
-                    exact: true
-                  }
-                ]
-            }
-          ]
-        }, {
-          name: 'three',
-          path: '/three',
-          exact: true
-        } 
-      ]
+      current: menus[0].path,
+      menus 
     }
   }
 
