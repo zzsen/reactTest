@@ -1,11 +1,12 @@
 import ProjectTab from './views/project/tab.js'
+import test from './views/project/test.js'
 
 const routes = [
     {
         key: 1,
         path: '/',
         exact: true,
-        component: ProjectTab
+        component: test
     },
     {
         key: 2,
