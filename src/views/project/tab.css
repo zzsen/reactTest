@@ -4,6 +4,8 @@
   max-width: 1200px;
   margin-top: 10px;
   background-color: #ffffff;
-  padding: 20px;
   border-radius: 5px;
+}
+.ant-card-head-title{
+  text-align: left;
 }
