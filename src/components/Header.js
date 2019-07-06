@@ -6,13 +6,15 @@ const { SubMenu }  = Menu
 
 const allMenus = [ 
   {
-    name: 'one',
+    name: '项目列表',
     path: '/project/list',
-    exact: true
+    exact: true,
+    icon: 'mdi mdi-format-list-bulleted-type'
   }, {
     name: 'two',
     path: '/two',
     exact: true,
+    icon: 'mdi mdi-format-list-bulleted-type',
     children: [ 
       {
         name: 'group-one',
@@ -47,7 +49,8 @@ const allMenus = [
   }, {
     name: 'three',
     path: '/three',
-    exact: true
+    exact: true,
+    icon: 'mdi mdi-format-list-bulleted-type'
   } 
 ]
 
@@ -64,7 +67,7 @@ const Menus = withRouter(({ history }) => {
         key={menuItem.path}
         title={
           <span className="submenu-title-wrapper">
-            <Icon type="setting" />
+            <i className={menuItem.icon}></i>
             {menuItem.name}
           </span>
         }
@@ -97,7 +100,7 @@ const Menus = withRouter(({ history }) => {
           to={menuItem.path}
           exact={menuItem.exact}
           activeClassName="navActive">
-          <Icon type="mail" />
+          <i className={menuItem.icon}></i>
           {menuItem.name}
         </NavLink>
       </Menu.Item>
