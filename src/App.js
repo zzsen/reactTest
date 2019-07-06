@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 import 'antd/dist/antd.css'
 import Header from './components/Header.js'
 import routes from './routes.js'
@@ -12,16 +12,19 @@ class App extends React.Component {
         <Header/>
         <div className="AppBody">
           <Router>
-          {
-            routes.map((routes) => (
-              <Route
-                key={routes.key}
-                exact={routes.exact}
-                path={routes.path}
-                component={routes.component}
-              />
-            ))
-          }
+            <Switch>
+            {
+              routes.map((routes) => (
+                <Route
+                  key={routes.key}
+                  exact={routes.exact}
+                  path={routes.path}
+                  component={routes.component}
+                />
+              ))
+            }
+              <Redirect to={routes[0].path} />
+            </Switch>
           </Router>
         </div>
       </div>
