@@ -30,6 +30,12 @@
 
 .AppMenu{
   background-color: gray !important;
+  .ant-menu-item-selected,.ant-menu-submenu-selected {
+    color: black !important;
+    a, a>i {
+      color: black !important;
+    }
+  }
   li {
     height: 60px !important;
     line-height: 60px;
