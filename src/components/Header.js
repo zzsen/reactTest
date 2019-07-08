@@ -140,14 +140,7 @@ class Header extends React.Component {
       date: new Date()
     });
   }
-
-  handleClick = e => {
-    this.setState({
-      current: e.key
-    })
-  }
-
-
+  
   render() {
     return (
       <div className="AppHeader">
