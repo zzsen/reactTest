@@ -11,7 +11,12 @@ class Tab extends React.Component {
       {
         key: 1,
         value: 1,
-        tab: (<span><i class="mdi mdi-plus-circle-outline"/>新建</span>)
+        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
+      },
+      {
+        key: 2,
+        value: 2,
+        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
       }
     ]
 
@@ -19,7 +24,7 @@ class Tab extends React.Component {
       <div className="ProjectTab">
         <Card
           title="项目列表"
-          extra={<span><i class="mdi mdi-plus-circle-outline"/>新建</span>}>
+          extra={<span><i className="mdi mdi-plus-circle-outline"/>新建</span>}>
           <Tabs
             defaultActiveKey="1"
             tabPosition="left"
