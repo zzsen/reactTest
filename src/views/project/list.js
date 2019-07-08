@@ -6,21 +6,6 @@ import './list.css'
 class List extends React.Component {
   constructor(props){
     super(props)
-    const dataSource = [
-      {
-        key: '1',
-        name: props.type + "111",
-        age: 32,
-        address: '西湖区湖底公园1号',
-      },
-      {
-        key: '2',
-        name: props.type + "222",
-        age: 42,
-        address: '西湖区湖底公园1号',
-      },
-    ]
-    
     const columns = [
       {
         title: '姓名',
@@ -41,10 +26,32 @@ class List extends React.Component {
 
     this.state={
       columns,
-      dataSource
+      type: props.type,
+      dataSource: []
     }
   }
   
+  componentDidMount() {
+    console.log(this.state.type)
+    const dataSource = [
+      {
+        key: '1',
+        name: this.state.type + "111",
+        age: 32,
+        address: '西湖区湖底公园1号',
+      },
+      {
+        key: '2',
+        name: this.state.type + "222",
+        age: 42,
+        address: '西湖区湖底公园1号',
+      },
+    ]
+    
+    this.setState({
+      dataSource
+    });
+  }  
 
   render() {
     return (
