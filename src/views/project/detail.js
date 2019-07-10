@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Card, Collapse, Icon } from 'antd'
+import Product from './product'
+import { Button, Card, Collapse, Icon, Row, Col } from 'antd'
 import 'antd/dist/antd.css'
 import './detail.scss'
 const { Panel } = Collapse
@@ -26,27 +27,47 @@ class Detail extends React.Component {
       marginBottom: 24,
       border: 0,
       overflow: 'hidden',
-    };
+    }
+
     const text = `
       A dog is a type of domesticated animal.
       Known for its loyalty and faithfulness,
       it can be found as a welcome guest in many households across the world.
-    `;
+    `
+
+    const title = (
+      <div className="detailTitle">
+        <Button className="backBtn">More</Button>
+        <span>text</span>
+      </div>
+    )
+
     return (
       <div className="ProjectDetail">
         {/* 基本信息 */}    
         <Card size="small"
-          title={<span><Button style={{float: 'left'}}>More</Button><span style={{margin: 0}}>text</span></span>}
-          extra={<Button style={{float: 'left'}}>More</Button>}>
+          bordered={false}
+          title={title}>
           <Collapse
             bordered={false}
-            defaultActiveKey={['1']}
+            defaultActiveKey={['basicDetail']}
             expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-            <Panel header="This is panel header 1" key="1" style={customPanelStyle}>
-              <p>{text}</p>
+            <Panel header="basicDetail" key="basicDetail" style={customPanelStyle}>
+              <Row type="flex" justify="start">
+                <Col span={3} className="col-left">col-4：</Col>
+                <Col span={8} className="col-right">col-4</Col>
+                <Col span={3} className="col-left">col-4：</Col>
+                <Col span={8} className="col-right">col-4</Col>
+              </Row>
+              <Row type="flex" justify="start">
+                <Col span={3} className="col-left">col-4：</Col>
+                <Col span={8} className="col-right">col-4</Col>
+                <Col span={3} className="col-left">col-4：</Col>
+                <Col span={8} className="col-right">col-4</Col>
+              </Row>
             </Panel>
-            <Panel header="This is panel header 2" key="2" style={customPanelStyle}>
-              <p>{text}</p>
+            <Panel header="productList" key="2" style={customPanelStyle}>
+              <Product></Product>
             </Panel>
             <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
               <p>{text}</p>
