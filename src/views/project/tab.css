@@ -1,4 +1,4 @@
-.ProjectTab{
+.ProjectTab {
   margin: 0 20px;
   width:100%;
   max-width: 1200px;
@@ -6,6 +6,6 @@
   background-color: #ffffff;
   border-radius: 5px;
 }
-.ant-card-head-title{
+.ant-card-head-title {
   text-align: left;
 }
