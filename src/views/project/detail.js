@@ -1,6 +1,7 @@
 import React from 'react'
 import Product from './product'
 import { Button, Card, Collapse, Icon, Row, Col } from 'antd'
+import { withRouter } from "react-router-dom"
 import 'antd/dist/antd.css'
 import './detail.scss'
 const { Panel } = Collapse
@@ -14,11 +15,14 @@ class Detail extends React.Component {
   }
   
   componentDidMount() {
-    console.log(this.state.id)
     this.setState({
       id: this.state.id
     });
   }  
+
+  goBack() {
+    this.props.history.goBack()
+  }
 
   render() {
     const customPanelStyle = {
@@ -37,7 +41,7 @@ class Detail extends React.Component {
 
     const title = (
       <div className="detailTitle">
-        <Button className="backBtn">More</Button>
+        <Button className="backBtn" onClick={()=>this.goBack()}>More</Button>
         <span>text</span>
       </div>
     )
@@ -79,4 +83,4 @@ class Detail extends React.Component {
   }
 }
   
-export default Detail
+export default withRouter(Detail)
