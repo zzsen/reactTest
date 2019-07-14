@@ -40,3 +40,12 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.col-right {
+  padding: 5px 10px;
+  text-align: left;
+}
+.col-left {
+  padding: 5px 10px;
+  text-align: right;
+}
