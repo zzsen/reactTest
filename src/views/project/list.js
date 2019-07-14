@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button ,Table } from 'antd'
+import { Link } from "react-router-dom"
 import 'antd/dist/antd.css'
 import './list.css'
 
@@ -52,7 +53,8 @@ class List extends React.Component {
 
     const dataSource = data.map(a=>{
       return Object.assign(a,{
-        nameLink: (<Button type="link" href={'#/project/'+a.id}>{a.name}</Button>)
+        // nameLink: (<Button type="link" href={'#/project/'+a.id}>{a.name}</Button>)
+        nameLink: (<Button type="link"><Link to={'/project/'+a.id}>{a.name}</Link></Button>)
       })
     })
     
