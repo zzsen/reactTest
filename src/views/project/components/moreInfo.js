@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tabs } from 'antd'
+import Member from './member'
 import 'antd/dist/antd.css'
 import './moreInfo.scss'
 const { TabPane } = Tabs
@@ -19,30 +20,15 @@ class PruductList extends React.Component {
     });
   }  
   render() {
-    const projectTypes = [
-      {
-        key: 1,
-        value: 1,
-        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
-      },
-      {
-        key: 2,
-        value: 2,
-        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
-      }
-    ]
     return (
       <div className="ProductList">
         <Tabs
-          defaultActiveKey="1"
+          defaultActiveKey="Member"
           tabPosition="left"
           type="card">
-          {
-            projectTypes.map((type) => (
-              <TabPane tab={type.tab} key={type.key}>
-              </TabPane>
-            ))
-          }
+          <TabPane tab='memberInfo' key='member'>
+            <Member></Member>
+          </TabPane>
         </Tabs>
       </div>
     )
