@@ -1,0 +1,10 @@
+.ProductList {
+  text-align: left;
+}
+
+.product {
+  width: calc(25% - 20px);
+  display: inline-block;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
