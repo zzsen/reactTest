@@ -1,10 +1,11 @@
 import React from 'react'
-import Product from './product'
-import { Button, Card, Collapse, Icon, Row, Col } from 'antd'
+import Product from './components/product'
+import { Button, Card, Collapse, Icon, Row, Col, Tabs } from 'antd'
 import { withRouter } from "react-router-dom"
 import 'antd/dist/antd.css'
 import './detail.scss'
 const { Panel } = Collapse
+const { TabPane } = Tabs
 
 class Detail extends React.Component {
   constructor(props){
@@ -46,6 +47,19 @@ class Detail extends React.Component {
       </div>
     )
 
+    const projectTypes = [
+      {
+        key: 1,
+        value: 1,
+        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
+      },
+      {
+        key: 2,
+        value: 2,
+        tab: (<span><i className="mdi mdi-plus-circle-outline"/>新建</span>)
+      }
+    ]
+
     return (
       <div className="ProjectDetail">
         {/* 基本信息 */}    
@@ -74,7 +88,17 @@ class Detail extends React.Component {
               <Product></Product>
             </Panel>
             <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
-              <p>{text}</p>
+              <Tabs
+                defaultActiveKey="1"
+                tabPosition="left"
+                type="card">
+                {
+                  projectTypes.map((type) => (
+                    <TabPane tab={type.tab} key={type.key}>
+                    </TabPane>
+                  ))
+                }
+              </Tabs>
             </Panel>
           </Collapse>
         </Card>
