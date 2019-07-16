@@ -1,7 +1,7 @@
 import React from 'react'
-import { Table } from 'antd'
+import { Popover, Table, Tag } from 'antd'
 import 'antd/dist/antd.css'
-import './moreInfo.scss'
+import './member.scss'
 
 
 class PruductList extends React.Component {
@@ -10,18 +10,18 @@ class PruductList extends React.Component {
     const columns = [
       {
         title: '姓名',
-        dataIndex: 'nameLink',
-        key: 'nameLink',
+        dataIndex: 'name',
+        key: 'name',
       },
       {
-        title: '年龄',
-        dataIndex: 'age',
-        key: 'age',
+        title: '角色',
+        dataIndex: 'roleInfo',
+        key: 'roleInfo',
       },
       {
-        title: '住址',
-        dataIndex: 'address',
-        key: 'address',
+        title: 'position',
+        dataIndex: 'positionInfo',
+        key: 'positionInfo',
       },
     ]
     const members = [
@@ -30,24 +30,31 @@ class PruductList extends React.Component {
         name: '11',
         createTime: '20190716',
         creator: 'test',
-        isDelete: false
+        role: 'test',
+        isDelete: false,
+        positions: ['11', '22', '33']
       },
       {
         id: 2,
         name: '22',
         createTime: '20190716',
         creator: 'test',
-        isDelete: false
+        role: 'test',
+        isDelete: false,
+        positions: ['11', '22', '33']
       },
       {
         id: 3,
         name: '33',
         createTime: '20190716',
         creator: 'test',
-        isDelete: false
+        role: 'test',
+        isDelete: false,
+        positions: ['11', '22', '33']
       }
     ]
     this.state={
+      columns,
       members,
       id: props.id
     }
@@ -58,15 +65,36 @@ class PruductList extends React.Component {
       id: this.state.id
     });
   }  
+
+  log(e) {
+    console.log(e);
+  }
+
   render() {
     const dataSource = this.state.members.map(a => {
       return Object.assign(a, {
-        createInfo: 'created by ' + a.creator + ' , ' + a.createTime
+        createInfo: 'created by ' + a.creator + ' , ' + a.createTime,
+        roleInfo: (
+          <React.Fragment>
+            <Popover
+              content={a.createInfo}
+              placement="left"
+              trigger="hover">
+              {a.role}
+            </Popover>
+            &nbsp;
+            <Tag
+              closable
+              color="red"
+              onClose={this.log}>已删除</Tag>
+          </React.Fragment>
+        ),
+        positionInfo: a.positions.join(' 、 ')
       })
     })
     return (
       <Table
-        dataSource={this.state.dataSource}
+        dataSource={dataSource}
         columns={this.state.columns} />
     )
   }
