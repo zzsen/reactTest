@@ -1,6 +1,5 @@
 import React from 'react'
-import { Collapse } from 'antd'
-import FlowCard from './flowCard'
+import { Collapse, Card, Button } from 'antd'
 import 'antd/dist/antd.css'
 import './flow.scss'
 const { Panel } = Collapse
@@ -9,11 +8,7 @@ const { Panel } = Collapse
 class Flow extends React.Component {
   constructor(props){
     super(props)
-    var flow = {
-
-    }
     this.state={
-      flow,
       id: props.id
     }
   }
@@ -32,6 +27,27 @@ class Flow extends React.Component {
         as a welcome guest in many households across the world.
       </p>
     )
+    var flows = []
+    var i = 0
+    while (i < 20) {
+      var steps = []
+      var j = 0
+      while (j < 5) {
+        steps.push({
+          id: i * 10 + j,
+          name: "step" + (i * 10 + j),
+          position: ["1", "2", "3"]
+        })
+        j++
+      }
+      flows.push({
+        id: i,
+        name: 'flow' + i,
+        steps
+      })
+      i++
+    }
+    console.log(flows)
     return (
     <Collapse defaultActiveKey={['1']} className="flowCollapse">
       <Panel
@@ -39,7 +55,15 @@ class Flow extends React.Component {
         header="Flow"
         key="1">
         {
-          <FlowCard flow={this.state.flow}></FlowCard>
+          flows.forEach(flow => {
+            return (
+              <Card title="Default size card" extra={<Button>More</Button>} style={{ width: 300 }}>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+              </Card>
+              )
+          })
         }
       </Panel>
       <Panel
