@@ -60,7 +60,7 @@ class List extends React.Component {
     
     this.setState({
       dataSource
-    });
+    })
   }  
 
   render() {

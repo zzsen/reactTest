@@ -4,7 +4,7 @@ import 'antd/dist/antd.css'
 import './member.scss'
 
 
-class PruductList extends React.Component {
+class Member extends React.Component {
   constructor(props){
     super(props)
     const columns = [
@@ -57,7 +57,7 @@ class PruductList extends React.Component {
   }  
 
   log(e) {
-    console.log(e);
+    console.log(e)
   }
 
   render() {
@@ -91,4 +91,4 @@ class PruductList extends React.Component {
   }
 }
   
-export default PruductList
+export default Member

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabs } from 'antd'
 import Member from './member'
+import Flow from './flow'
 import 'antd/dist/antd.css'
 import './moreInfo.scss'
 const { TabPane } = Tabs
@@ -28,6 +29,9 @@ class PruductList extends React.Component {
           type="card">
           <TabPane tab='memberInfo' key='member'>
             <Member></Member>
+          </TabPane>
+          <TabPane tab='flowInfo' key='flow'>
+            <Flow></Flow>
           </TabPane>
         </Tabs>
       </div>

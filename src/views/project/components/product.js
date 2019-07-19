@@ -41,7 +41,7 @@ class PruductList extends React.Component {
   componentDidMount() {
     this.setState({
       id: this.state.id
-    });
+    })
   }  
 
   render() {

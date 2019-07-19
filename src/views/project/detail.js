@@ -18,7 +18,7 @@ class Detail extends React.Component {
   componentDidMount() {
     this.setState({
       id: this.state.id
-    });
+    })
   }  
 
   goBack() {
