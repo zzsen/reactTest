@@ -44,6 +44,7 @@ class Member extends React.Component {
     var num = 0
     while (num<100) {
       this.state.members.push(Object.assign({
+        key: num,
         id: num,
         name: 'user' + num,
         isDelete: num % 2 === 0
