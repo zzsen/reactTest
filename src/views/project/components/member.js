@@ -24,36 +24,16 @@ class PruductList extends React.Component {
         key: 'positionInfo',
       },
     ]
-    const members = [
-      {
-        id: 1,
-        name: '11',
-        createTime: '20190716',
-        creator: 'test',
-        role: 'test',
-        isDelete: false,
-        positions: ['11', '22', '33']
-      },
-      {
-        id: 2,
-        name: '22',
-        createTime: '20190716',
-        creator: 'test',
-        role: 'test',
-        isDelete: false,
-        positions: ['11', '22', '33']
-      },
-      {
-        id: 3,
-        name: '33',
-        createTime: '20190716',
-        creator: 'test',
-        role: 'test',
-        isDelete: false,
-        positions: ['11', '22', '33']
-      }
-    ]
+
+    const member = {
+      createTime: '20190716',
+      creator: 'test',
+      role: 'test',
+      positions: ['11', '22', '33']
+    }
+    let members = []
     this.state={
+      member,
       columns,
       members,
       id: props.id
@@ -61,7 +41,17 @@ class PruductList extends React.Component {
   }
   
   componentDidMount() {
+    var num = 0
+    while (num<100) {
+      this.state.members.push(Object.assign({
+        id: num,
+        name: 'user' + num,
+        isDelete: num % 2 === 0
+      }, this.state.member))
+      num++
+    }
     this.setState({
+      members: this.state.members,
       id: this.state.id
     });
   }  
@@ -83,10 +73,11 @@ class PruductList extends React.Component {
               {a.role}
             </Popover>
             &nbsp;
+            {a.isDelete&&
             <Tag
               closable
               color="red"
-              onClose={this.log}>已删除</Tag>
+              onClose={this.log}>已删除</Tag>}
           </React.Fragment>
         ),
         positionInfo: a.positions.join(' 、 ')
