@@ -1,5 +1,5 @@
 import React from 'react'
-import { Collapse, Card, Button, Row, Col, Timeline } from 'antd'
+import { Collapse, Card, Button, Timeline, Tag } from 'antd'
 import 'antd/dist/antd.css'
 import './flow.scss'
 const { Panel } = Collapse
@@ -21,12 +21,6 @@ class Flow extends React.Component {
   
 
   render() {
-    const text = (
-      <p style={{ paddingLeft: 24 }}>
-        A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found
-        as a welcome guest in many households across the world.
-      </p>
-    )
     var flows = []
     var i = 0
     while (i < 20) {
@@ -70,7 +64,7 @@ class Flow extends React.Component {
               <Card
                 className='flowCard'
                 title={flow.name}
-                extra={<span>More</span>}>
+                extra={<Button type='link' className='opeBtn'><i className='mdi mdi-trash-can-outline'/>delete</Button>}>
                 <Timeline>
                 {
                   flow.steps.map(step=>{
@@ -101,11 +95,24 @@ class Flow extends React.Component {
             return (
               <Card
                 className='flowCard'
-                title='Default size card'
-                extra={<Button>More</Button>}>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
+                title={<div>flow.name&nbsp;<Tag color="red">#deleted</Tag></div>}
+                extra={<Button type='link' className='opeBtn'><i className='mdi mdi-undo-variant'/>undelete</Button>}>
+                <Timeline>
+                {
+                  flow.steps.map(step=>{
+                    return (
+                      <Timeline.Item>
+                        <div style={{display: 'inline-block', width: "50px"}}>
+                          {step.name}
+                        </div>
+                        <div style={{display: 'inline-block',float: 'right'}}>
+                          {step.position.join("、")}
+                        </div>
+                      </Timeline.Item>
+                    )
+                  })
+                }
+                </Timeline>
               </Card>
               )
           })
