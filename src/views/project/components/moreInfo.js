@@ -24,7 +24,7 @@ class PruductList extends React.Component {
     return (
       <div className="ProductList">
         <Tabs
-          defaultActiveKey="Member"
+          defaultActiveKey="member"
           tabPosition="left"
           type="card">
           <TabPane tab='memberInfo' key='member'>

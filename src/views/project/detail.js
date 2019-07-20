@@ -79,7 +79,7 @@ class Detail extends React.Component {
             <Panel
               className="detailPanel"
               header="panel"
-              key="3">
+              key="moreInfo">
               <MoreInfo></MoreInfo>
             </Panel>
           </Collapse>
