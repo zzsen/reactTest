@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
 import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 import 'antd/dist/antd.css'
 import Header from './components/Header.js'

@@ -49,3 +49,24 @@ body {
   padding: 5px 10px;
   text-align: right;
 }
+.deleteBtn {
+  color: red !important;
+}
+
+.hoverBtn {
+  cursor: pointer;
+  font-size: 16px !important;
+  user-select: none;
+  div{
+    position: relative;
+    float: right;
+    width: 0;
+    overflow: hidden;
+    transition:width 2s;
+  }
+  &:hover {
+    div {
+      width: 50px;
+    }
+  }
+}
