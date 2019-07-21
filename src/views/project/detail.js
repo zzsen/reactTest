@@ -34,8 +34,9 @@ class Detail extends React.Component {
       <div className="detailTitle">
         <Button
           className="backBtn"
-          onClick={()=>this.goBack()}>
-          More
+          onClick={()=>this.goBack()}
+          title='goBack'>
+          <i className='mdi mdi-arrow-left-bold-outline'></i>
         </Button>
         <span>text</span>
       </div>
@@ -47,6 +48,14 @@ class Detail extends React.Component {
         <Card
           size="small"
           bordered={false}
+          extra={
+            <div style={{width: '80px'}}>
+              <div className='deleteBtn hoverBtn' style={{float: 'right'}}>
+                <i className='mdi mdi-trash-can-outline'></i>
+                <div>delete</div>
+              </div>
+            </div>
+          }
           title={title}>
           <Collapse
             bordered={false}
