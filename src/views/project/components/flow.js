@@ -4,6 +4,62 @@ import 'antd/dist/antd.css'
 import './flow.scss'
 const { Panel } = Collapse
 
+class FlowCard extends React.Component {
+  render () {
+    const flow = this.props.flow
+    return (
+      <Card
+        key={flow.id}
+        className='flowCard'
+        extra={
+          <div>
+            <Button type='link' className='hoverBtn optBtn' title='default'>
+              <i className='mdi mdi-alpha-d-circle-outline'/>
+              <div>default</div>
+            </Button>
+            <Button type='link' className='hoverBtn optBtn' title='backlog'>
+              <i className='mdi mdi-alpha-b-circle-outline'/>
+              <div>backlog</div>
+            </Button>
+            <Button type='link' className='hoverBtn optBtn deleteBtn' title='delete'>
+              <i className='mdi mdi-trash-can-outline'/>
+              <div>delete</div>
+            </Button>
+          </div>}
+        title={
+          <div>
+            {flow.name}&nbsp;
+            {flow.isDefault && (
+              <i
+                className='mdi mdi-clipboard-flow'
+                style={{color: '#108ee9'}}
+                title='default'/>
+            )}
+            <span className='createInfo'>
+              created by {flow.creator} {flow.createTime}
+            </span>
+          </div>
+        }>
+        <Timeline>
+        {
+          flow.steps.map(step=>{
+            return (
+              <Timeline.Item key={step.id}>
+                <div style={{display: 'inline-block', width: "50px"}}>
+                  {step.name}
+                </div>
+                <div style={{display: 'inline-block',float: 'right'}}>
+                  {step.position.join("、")}
+                </div>
+              </Timeline.Item>
+            )
+          })
+        }
+        </Timeline>
+      </Card>
+    )
+  }
+}
 
 class Flow extends React.Component {
   constructor(props){
@@ -64,46 +120,8 @@ class Flow extends React.Component {
         {
           flows.map(flow => {
             return (
-              <Card
-                key={flow.id}
-                className='flowCard'
-                extra={
-                  <Button type='link' className='opeBtn'>
-                    <i className='mdi mdi-trash-can-outline'/>
-                    <span>delete</span>
-                  </Button>}
-                title={
-                  <div>
-                    {flow.name}&nbsp;
-                    {flow.isDefault && (
-                      <i
-                        className='mdi mdi-clipboard-flow'
-                        style={{color: '#108ee9'}}
-                        title='default'/>
-                    )}
-                    <span className='createInfo'>
-                      created by {flow.creator} {flow.createTime}
-                    </span>
-                  </div>
-                }>
-                <Timeline>
-                {
-                  flow.steps.map(step=>{
-                    return (
-                      <Timeline.Item key={step.id}>
-                        <div style={{display: 'inline-block', width: "50px"}}>
-                          {step.name}
-                        </div>
-                        <div style={{display: 'inline-block',float: 'right'}}>
-                          {step.position.join("、")}
-                        </div>
-                      </Timeline.Item>
-                    )
-                  })
-                }
-                </Timeline>
-              </Card>
-              )
+              <FlowCard flow={flow}></FlowCard>
+            )
           })
         }
       </Panel>

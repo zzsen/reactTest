@@ -28,17 +28,8 @@
     .ant-card-body {
       padding: 20px 30px;
     }
-    .opeBtn {
+    .optBtn {
       padding: 0 !important;
-      span{
-        display: none;
-      }
-      &:hover {
-        span {
-          display: inline;
-          transition:all 500ms;
-        }
-      }
     }
     .createInfo {
       color: #9e9b9b;
