@@ -40,13 +40,16 @@ class Flow extends React.Component {
         })
       }
       steps.push({
-        id: i * 10 + j,
+        id: i * 10 + j + 1,
         name: 'end',
         position: ['1', '2', '3']
       })
       flows.push({
         id: i,
         name: 'flow' + i,
+        isDefault: i === 0,
+        createTime: '2019-07-20',
+        creator:　'creator' + i,
         steps
       })
       i++
@@ -62,14 +65,32 @@ class Flow extends React.Component {
           flows.map(flow => {
             return (
               <Card
+                key={flow.id}
                 className='flowCard'
-                title={flow.name}
-                extra={<Button type='link' className='opeBtn'><i className='mdi mdi-trash-can-outline'/>delete</Button>}>
+                extra={
+                  <Button type='link' className='opeBtn'>
+                    <i className='mdi mdi-trash-can-outline'/>
+                    <span>delete</span>
+                  </Button>}
+                title={
+                  <div>
+                    {flow.name}&nbsp;
+                    {flow.isDefault && (
+                      <i
+                        className='mdi mdi-clipboard-flow'
+                        style={{color: '#108ee9'}}
+                        title='default'/>
+                    )}
+                    <span className='createInfo'>
+                      created by {flow.creator} {flow.createTime}
+                    </span>
+                  </div>
+                }>
                 <Timeline>
                 {
                   flow.steps.map(step=>{
                     return (
-                      <Timeline.Item>
+                      <Timeline.Item key={step.id}>
                         <div style={{display: 'inline-block', width: "50px"}}>
                           {step.name}
                         </div>
@@ -94,6 +115,7 @@ class Flow extends React.Component {
           flows.map(flow => {
             return (
               <Card
+                key={flow.id}
                 className='flowCard'
                 title={<div>flow.name&nbsp;<Tag color="red">#deleted</Tag></div>}
                 extra={<Button type='link' className='opeBtn'><i className='mdi mdi-undo-variant'/>undelete</Button>}>
@@ -101,7 +123,7 @@ class Flow extends React.Component {
                 {
                   flow.steps.map(step=>{
                     return (
-                      <Timeline.Item>
+                      <Timeline.Item key={step.id}>
                         <div style={{display: 'inline-block', width: "50px"}}>
                           {step.name}
                         </div>

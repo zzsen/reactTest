@@ -10,7 +10,7 @@
     display: inline-block;
     position: relative;
     width: calc( 50% - 20px );
-    margin: 10px 10px 10px;
+    margin: 10px;
     &:hover {
       box-shadow: 2px 2px 5px rgb(199, 194, 194)
     }
@@ -30,6 +30,18 @@
     }
     .opeBtn {
       padding: 0 !important;
+      span{
+        display: none;
+      }
+      &:hover {
+        span {
+          display: inline;
+          transition:all 500ms;
+        }
+      }
+    }
+    .createInfo {
+      color: #9e9b9b;
     }
   }
   .ant-timeline-item-content {
