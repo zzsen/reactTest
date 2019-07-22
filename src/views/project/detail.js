@@ -1,16 +1,20 @@
 import React from 'react'
 import Product from './components/product'
 import MoreInfo from './components/moreInfo'
-import { Button, Card, Collapse, Icon, Row, Col } from 'antd'
+import { Button, Card, Collapse, Icon, Modal, Row, Col } from 'antd'
 import { withRouter } from "react-router-dom"
 import 'antd/dist/antd.css'
 import './detail.scss'
 const { Panel } = Collapse
+const { confirm } = Modal
 
 class Detail extends React.Component {
   constructor(props){
     super(props)
     this.state={
+      project: {
+        delete: false
+      },
       id: props.id
     }
   }
@@ -23,6 +27,23 @@ class Detail extends React.Component {
 
   goBack() {
     this.props.history.goBack()
+  }
+
+  deleteProject() {
+    var self = this
+    confirm({
+      title: 'Are you sure delete this task?',
+      content: 'Some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    })
   }
 
   render() {
@@ -50,10 +71,26 @@ class Detail extends React.Component {
           bordered={false}
           extra={
             <div style={{width: '80px'}}>
-              <div className='deleteBtn hoverBtn' style={{float: 'right'}}>
-                <i className='mdi mdi-trash-can-outline'></i>
-                <div>delete</div>
-              </div>
+              {
+                !this.state.project.delete &&
+                (<div
+                  className='deleteBtn hoverBtn'
+                  onClick={()=>this.deleteProject()}
+                  style={{float: 'right'}}>
+                  <i className='mdi mdi-trash-can-outline'></i>
+                  <div>delete</div>
+                </div>)
+              }
+              {
+                this.state.project.delete &&
+                (<div
+                  className='hoverBtn'
+                  onClick={()=>this.deleteProject()}
+                  style={{float: 'right'}}>
+                  <i className='mdi mdi-trash-can-outline'></i>
+                  <div>delete</div>
+                </div>)
+              }
             </div>
           }
           title={title}>
