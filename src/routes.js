@@ -16,6 +16,12 @@ const routes = [
         component: ProjectDetail
     },
     {
+        key: '/api/list',
+        path: '/api/list',
+        exact: true,
+        component: ProjectTab
+    },
+    {
         key: 3,
         path: '/two_one',
         exact: true,

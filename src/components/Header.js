@@ -10,7 +10,14 @@ const allMenus = [
     path: '/project/list',
     exact: true,
     icon: 'mdi mdi-format-list-bulleted-type'
-  }, {
+  }, 
+  {
+    name: 'API',
+    path: '/api/list',
+    exact: true,
+    icon: 'mdi mdi-comment-arrow-right-outline'
+  },
+  {
     name: 'two',
     path: '/two',
     exact: true,
