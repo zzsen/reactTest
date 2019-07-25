@@ -30,7 +30,6 @@ class Detail extends React.Component {
   }
 
   deleteProject() {
-    var self = this
     confirm({
       title: 'Are you sure delete this task?',
       content: 'Some descriptions',
